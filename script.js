@@ -8,7 +8,7 @@ function getComputerChoice() {
     return CHOICES[random(0, CHOICES.length)]
 }
 
-function getUserChoice() {
+function getPlayerChoice() {
     do {
         playerSelection = prompt("What is your choice?");
         if (playerSelection === null) {
@@ -45,10 +45,6 @@ function whoWins(choice1, choice2) {
 
 function playRound(playerSelection, computerSelection) {
     
-    // Store computer and user choices
-    computerSelection = getComputerChoice();
-    playerSelection = getUserChoice();
-
     // Main game logic 
     let gameValue = whoWins(playerSelection, computerSelection);
 
@@ -62,4 +58,3 @@ function playRound(playerSelection, computerSelection) {
         return `Computer wins! ${computerSelection} beats ${playerSelection}.`;
     }
 }
-
