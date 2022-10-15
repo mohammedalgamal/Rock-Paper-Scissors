@@ -43,4 +43,23 @@ function whoWins(choice1, choice2) {
     return diff;
 }
 
+function playRound(playerSelection, computerSelection) {
+    
+    // Store computer and user choices
+    computerSelection = getComputerChoice();
+    playerSelection = getUserChoice();
+
+    // Main game logic 
+    let gameValue = whoWins(playerSelection, computerSelection);
+
+    if (gameValue === 0) {
+        return `It's a tie, you both chose ${playerSelection}.`;
+    }
+    else if (gameValue > 0) {
+        return `You win! ${playerSelection} beats ${computerSelection}.`;
+    }
+    else {
+        return `Computer wins! ${computerSelection} beats ${playerSelection}.`;
+    }
+}
 
