@@ -26,11 +26,21 @@ p {
     text-align: center;
 }
 
+.scores {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #c89215;
+    font-size: xx-large;
+
+}
+
 #order {
     font-size: 72px;
     color: #c89215;
     font-family: monospace;
     margin-bottom: 0;
+    margin-top: 0px;
 }
 
 #rule {
@@ -57,4 +67,11 @@ button {
 button:hover {
     scale: 1.25;
     border: #c89215 solid;
+}
+
+.result {
+    margin-top: 70px;
+    font-size: xx-large;
+    font-weight: bold;
+    color: #e20000;
 }
