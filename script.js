@@ -5,24 +5,7 @@ function random(start, end) {
 }
 
 function getComputerChoice() {
-    return CHOICES[random(0, CHOICES.length)]
-}
-
-function getPlayerChoice() {
-    do {
-        playerSelection = prompt("What is your choice?");
-        if (playerSelection === null) {
-            alert('please type in a choice!');
-            continue;
-        }
-        playerSelection = playerSelection.toLowerCase();
-        if (!CHOICES.includes(playerSelection)) {
-            alert('invalid choice');
-            continue
-        }
-    } while (!CHOICES.includes(playerSelection) || playerSelection === null);
-    
-    return playerSelection;
+    return CHOICES[random(0, CHOICES.length)];
 }
 
 function whoWins(choice1, choice2) {
@@ -37,11 +20,11 @@ function whoWins(choice1, choice2) {
 
     // Reverse diff sign if the difference is 2 and normalize it
     if (Math.abs(diff) === 2) {
-        diff = (-diff / diff);
-    }
+        diff = (-diff / Math.abs(diff));
+    };
 
     return diff;
-}
+};
 
 function playRound(playerSelection, computerSelection) {
     
@@ -56,56 +39,52 @@ function playRound(playerSelection, computerSelection) {
     }
     else {
         return [`Computer wins! ${computerSelection} beats ${playerSelection}.`, gameValue];
-    }
-}
+    };
+};
 
 function game() {
-    
+    // This function gets the player choice and starts the game
+
     // Variables to store scores
     let playerScore = 0;
     let computerScore = 0;
+    let round;
 
-    // Play 5 rounds
-    for (let i = 0; i < 5; i++) {
-        // Call function playRound and score its values
-        let round = playRound(getPlayerChoice(), getComputerChoice());
+    // Select all buttons 
+    buttons = document.querySelectorAll(".buttons");
+
+    // Add event listener to each button
+    buttons.forEach(button => {button.addEventListener('click', e => {
+        if (playerScore < 5 && computerScore < 5){
+            playerSelection = e.target['id'];
         
-        // Update scores
-        if (round[1] > 0) {
-            playerScore += round[1];
-        }
-        else if (round[1] < 0) {
-            computerScore += -round[1];
-        }
-        
-        // Log the round result and scores
-        console.log('-----------------------------------------');
-        console.log(round[0]);
-        console.log(`Your current score: ${playerScore}`);
-        console.log(`Computer current score: ${computerScore}`);
+            // Play round
+            round = playRound(playerSelection, getComputerChoice());
 
-        // Return if one of the computer or player scored 3
-        if (playerScore >= 3) {
-            console.log('You win this game!');
-            return;
-        }
-        else if (computerScore >= 3) {
-            console.log('You Lose! computer scored 3.');
-            return;
-        }
-    }
+            // Update scores
+            if (round[1] > 0) {
+                playerScore += round[1];
+            }
+            else if (round[1] < 0) {
+                computerScore += -round[1];
+            };
 
-    // Log scores after 5 rounds
-    if (playerScore === computerScore) {
-        console.log(`The game is tied, you both scored ${computerScore}.`);
-    }
-    else if (playerScore > computerScore) {
-        console.log(`You win! Your final score is ${playerScore}, and computer final score is ${computerScore}.`);    
-    }
-    else {
-        console.log(`You lose! Your final score is ${playerScore}, and computer final score is ${computerScore}.`);    
-    }
+            // View the new scores and game value
+            document.querySelector('#player').textContent = `Your score: ${playerScore}`;
+            document.querySelector('#computer').textContent = `Computer score: ${computerScore}`;
+            document.querySelector('.result').textContent = `${round[0]}`;
 
-    // Terminate the function
-    return;
+            if (computerScore === 5) {
+                document.querySelector('.result').textContent = 'Computer wins the game!';
+            }
+            else if (playerScore === 5) {
+                document.querySelector('.result').textContent = 'You win the game!';
+            }
+        }
+        else {
+            document.querySelector('.result').textContent = 'Please reload page to play again.';
+        }
+        });
+    });
 }
+game();
