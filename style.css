@@ -13,3 +13,48 @@ body {
     font-size: 48px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+p {
+    text-align: center;
+}
+
+#order {
+    font-size: 72px;
+    color: #c89215;
+    font-family: monospace;
+    margin-bottom: 0;
+}
+
+#rule {
+    font-size: 60px;
+    color: #e20000;
+    margin-top: 20px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    margin-left: 80px;
+    margin-right: 80px;
+    height: 180px;
+    width: 180px;
+    background-color: #404040;
+    font-size: 72px;
+    border-radius: 8px;
+}
+
+button:hover {
+    scale: 1.25;
+    border: #c89215 solid;
+}
