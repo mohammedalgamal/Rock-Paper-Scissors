@@ -109,5 +109,3 @@ function game() {
     // Terminate the function
     return;
 }
-
-game()

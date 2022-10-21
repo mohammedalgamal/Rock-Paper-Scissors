@@ -1,0 +1,15 @@
+body {
+    background-color: #171717;
+    margin: 0;
+}
+
+.header {
+    height: 150px;
+    background-color: #212121;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #c89215;
+    font-size: 48px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
